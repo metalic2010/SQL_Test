@@ -1,0 +1,30 @@
+DECLARE @_LastName       [varchar](32) = 'Савин'     -- Фамилия пользователя
+       ,@_FirstName      [varchar](32) = 'Алексей'   -- Имя пользователя
+       ,@_Patronymic     [varchar](32) = 'Сергеевич' -- Отчество пользователя
+       ,@_PASS           [varchar](16) = 'Пароль123' -- Пароль пользователя
+       ,@_Gender         [varchar](4)  = 'Муж.'      -- пол пользователя
+       ,@_Email          [varchar](128) = ''         -- email пользователя
+       ,@_Phone          [bigint]       = 0          -- телефон пользователя
+       ,@_DateOfBirth    [date]         = GETDATE()  -- дата рождения пользователя
+       ,@_DateOfCreation [datetime2](0) = GETDATE()  -- дата создания учётки пользователя
+       ,@_DateOfChange   [datetime2](0) = GETDATE()  -- дата изменения данных пользователя
+       ,@_Country        [varchar](60)  = ''         -- страна пользователя
+       ,@_City           [varchar](60)  = ''         -- город пользователя
+       ,@_Address        [varchar](512) = ''         -- адрес пользователя
+       ,@_result  [varchar](256) = '';
+
+EXEC [Test].[dbo].[Set_AddUser] @LastName       = @_LastName
+                               ,@FirstName      = @_FirstName
+                               ,@Patronymic     = @_Patronymic
+                               ,@PASS           = @_PASS
+                               ,@Gender         = @_Gender
+                               ,@Email          = @_Email
+                               ,@Phone          = @_Phone
+                               ,@DateOfBirth    = @_DateOfBirth
+                               ,@DateOfCreation = @_DateOfCreation
+                               ,@DateOfChange   = @_DateOfChange
+                               ,@Country        = @_Country
+                               ,@City           = @_City
+                               ,@Address        = @_Address
+                               ,@result         = @_result output;
+print @_result
